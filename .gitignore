@@ -1,2 +1,5 @@
-*.mov
 
+echo "Screen Recording 2025-07-13 at 1.16.45 PM.mov" > .gitignore
+node_modules/
+.idea/
+target/

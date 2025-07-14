@@ -26,12 +26,12 @@
     &quot;assignee&quot;: &quot;rishibabel02&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/rishibabel02/Email-Assistant.git&quot;,
-    &quot;accountId&quot;: &quot;af4df667-e748-44da-88ab-fd17e6d632cc&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/rishibabel02/Email-Assistant-Ext.git",
+    "accountId": "af4df667-e748-44da-88ab-fd17e6d632cc"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -121,7 +121,7 @@
       <workItem from="1752383532949" duration="3681000" />
       <workItem from="1752432909160" duration="278000" />
       <workItem from="1752433205115" duration="1742000" />
-      <workItem from="1752466502542" duration="3438000" />
+      <workItem from="1752466502542" duration="4118000" />
     </task>
     <servers />
   </component>
