@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="527212b7-adff-43e9-bf29-c486925092a0" name="Changes" comment="" />
+    <list default="true" id="527212b7-adff-43e9-bf29-c486925092a0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../email-writer-ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/../email-writer-ext/content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../email-writer-ext/hello_extensions.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../email-writer-ext/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../email-writer-ext/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/email/writer/app/EmailGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/email/writer/app/EmailGeneratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/email/writer/app/EmailGeneratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/email/writer/app/EmailGeneratorService.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +34,12 @@
     &quot;assignee&quot;: &quot;rishibabel02&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/rishibabel02/Email-Assistant-Ext.git",
-    "accountId": "af4df667-e748-44da-88ab-fd17e6d632cc"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rishibabel02/Email-Assistant-Ext.git&quot;,
+    &quot;accountId&quot;: &quot;af4df667-e748-44da-88ab-fd17e6d632cc&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -121,7 +129,9 @@
       <workItem from="1752383532949" duration="3681000" />
       <workItem from="1752432909160" duration="278000" />
       <workItem from="1752433205115" duration="1742000" />
-      <workItem from="1752466502542" duration="4118000" />
+      <workItem from="1752466502542" duration="13967000" />
+      <workItem from="1752557491069" duration="667000" />
+      <workItem from="1752596606418" duration="129000" />
     </task>
     <servers />
   </component>

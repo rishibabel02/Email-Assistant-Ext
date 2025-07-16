@@ -1,6 +1,6 @@
 {
   "name": "Email Assistant",
-  "description": "Boost your productivity and save time with Email Assistant, your intelligent companion for writing emails faster, clearer, and more professionally.",
+  "description": "Boost your productivity and save time with Email Assistant Ext, your intelligent companion for writing emails faster and clearer",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": ["storage", "activeTab"],

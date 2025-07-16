@@ -30,8 +30,8 @@ public class EmailGeneratorService {
 
         // 2) Craft a request to the LLM
         Map<String, Object> reqBody = Map.of(
-                "contents", new Object[] {
-                        Map.of("parts", new Object[] {
+                "contents", new Object[]{
+                        Map.of("parts", new Object[]{
                                 Map.of("text", prompt)
                         })
                 }
@@ -46,8 +46,19 @@ public class EmailGeneratorService {
                 .bodyToMono(String.class)
                 .block();
 
+        System.out.println("Raw API Response: " + response); // Log raw response
+        String result = extractResponse(response);
+
+        System.out.println("Processed Response: " + result);
+
         // 4) Extract response and return
-        return extractResponse(response);
+        System.out.println("Returned final reply:");
+        System.out.println(result);
+        return result;
+//
+//        return extractResponse(response);
+
+
     }
 
     private String extractResponse(String response) {
@@ -59,7 +70,9 @@ public class EmailGeneratorService {
                 JsonNode content = candidates.get(0).path("content");
                 JsonNode parts = content.path("parts");
                 if (parts.isArray() && parts.size() > 0) {
-                    return parts.get(0).path("text").asText();
+                    String text = parts.get(0).path("text").asText();
+                    // Preserve double newlines for paragraphs, trim only leading/trailing whitespace
+                    return text.replaceAll("\\n{3,}", "\n\n").trim(); // Convert triple+ newlines to double
                 }
             }
             return "Error: Invalid response format";
@@ -69,17 +82,16 @@ public class EmailGeneratorService {
     }
 
     private String buildPrompt(EmailRequest emailRequest) {
-
         StringBuilder promptBuilder = new StringBuilder();
-        promptBuilder.append("Generate a professional email reply based on the following email:\n Please dont generate any subject and don't mention it.\n Just generate the body of the email.\n and only one email content , don't give options for the user to choose from.\n\n");
+        promptBuilder.append("Generate a professional email reply based on the following email. Do not include a subject line or any HTML tags (e.g., <p>). Use double newlines (\\n\\n) to separate paragraphs. Ensure the response is polite, context-aware, and addresses the timing of the invitation, noting it was for an evening that has passed. Suggest a future opportunity if appropriate. Keep the response concise, natural, and professional, with a clear closing (e.g., 'Best regards, [Your Name]').\n\n");
 
-        if(emailRequest.getTone() != null && !emailRequest.getTone().isEmpty()) {
+        if (emailRequest.getTone() != null && !emailRequest.getTone().isEmpty()) {
             promptBuilder.append("Tone: ").append(emailRequest.getTone()).append("\n");
         }
 
         promptBuilder.append("\nOriginal Email Content:\n").append(emailRequest.getEmailContent());
+        promptBuilder.append("\n\nNote: The invitation was for an evening that has already passed. Adjust the response to reflect this.");
         return promptBuilder.toString();
-
-
     }
 }
+

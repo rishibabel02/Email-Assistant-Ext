@@ -4,9 +4,10 @@ function findComposeToolBar(){
  const selectors = [
         '.btC',
         '.aDh',
-        '[role="toolbar]',
+        '[role="toolbar"]',
         '.gU.Up'
     ];
+    
 
     for(const selector of selectors){
         const toolbar = document.querySelector(selector)
@@ -32,16 +33,15 @@ function getEmailContent(){
         '.h7',
         '.a3s.aiL',
         'gmail_quote',
-        '[role="presentation]'
+        '[role="presentation"]'
     ];
 
     for(const selector of selectors){
         const content = document.querySelector(selector)
 
-        if(content) return content.innerText.trim();
-
-        return '';
+        if(content) return content.innerText.trim(); 
     }
+    return '';
 }
 
 function injectButton(){
@@ -66,6 +66,7 @@ function injectButton(){
             button.disabled = true;
 
             const emailContent = getEmailContent();
+            console.log("Email Content: " + emailContent);
 
             const res = await fetch('http://localhost:8080/api/email/generate', {
                 method: 'POST',
@@ -79,32 +80,38 @@ function injectButton(){
             });
 
             if(!res.ok){
-                throw new error('Api Req Failed!')
+                throw new Error('Api Req Failed!')
             }
 
             const generatedReply = await res.text()
+            console.log("Received Reply: " + generatedReply);
 
             const composeBox = document.querySelector('[role="textbox"][g_editable="true"]')
 
            if (composeBox) {
             composeBox.focus();
+          
+            const paragraphs = generatedReply.split(/\n\n/).filter(p => p.trim());
+            composeBox.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+            console.log("Applied HTML: " + composeBox.innerHTML);
 
-            const selection = window.getSelection();
-            if (!selection || selection.rangeCount === 0) return;
+            // const selection = window.getSelection();
+            // if (!selection || selection.rangeCount === 0) return;
 
-            const range = selection.getRangeAt(0);
-            range.deleteContents(); 
+            // const range = selection.getRangeAt(0);
+            // range.deleteContents(); 
 
-            const textNode = document.createTextNode(generatedReply);
-            range.insertNode(textNode);
+            // const textNode = document.createTextNode(generatedReply);
+            // range.insertNode(textNode);
 
             
-            range.setStartAfter(textNode);
-            range.setEndAfter(textNode);
-            selection.removeAllRanges();
-            selection.addRange(range);
+            // range.setStartAfter(textNode);
+            // range.setEndAfter(textNode);2
+            // selection.removeAllRanges();
+            // selection.addRange(range);
+
         } else{
-            console.log('Compose bo was not found')
+            console.log('Compose box was not found')
         }
         }catch(error){
             console.log(error)

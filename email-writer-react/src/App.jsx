@@ -33,8 +33,10 @@ const handleSubmit = async () => {
       tone
     });
 
-    setGeneratedReply(typeof res.data === 'string' ? res.data : JSON.stringify(res.data))
-    
+    // setGeneratedReply(typeof res.data === 'string' ? res.data : JSON.stringify(res.data))
+    console.log("Received raw reply:", res.data); // <- Add this log
+    setGeneratedReply(res.data);
+
   }catch(error){
     setError('Failed to generate email reply. Please try again later!')
     console.log(error);
@@ -96,28 +98,28 @@ const handleSubmit = async () => {
      )}
 
      {generatedReply && (
-        <Box sx={{mt:3}}>
-          <Typography variant='h6' gutterBottom>
-            Generated Reply
-          </Typography>
-          <TextField
-            fullWidth
-            multiline
-            rows={6}
-            variant='outlined'
-            value={generatedReply || ''}
-            slotProps={{input: { readOnly: true }}}
-          />
+  <Box sx={{ mt: 3 }}>
+    <Typography variant="h6" gutterBottom>
+      Generated Reply
+    </Typography>
 
-          <Button 
-            variant='outlined'
-            sx={{mt:2}}
-            onClick={(e) => navigator.clipboard.writeText(generatedReply)}
-          >
-            Copy to Clipboard
-          </Button>
-        </Box>
-     )}
+    <Box>
+      {generatedReply.split('\n\n').map((para, idx) => (
+        <Typography key={idx} component="p" sx={{ mb: 2 }}>
+          {para.trim()}
+        </Typography>
+      ))}
+    </Box>
+
+    <Button
+      variant="outlined"
+      sx={{ mt: 2 }}
+      onClick={() => navigator.clipboard.writeText(generatedReply)}
+    >
+      Copy to Clipboard
+    </Button>
+  </Box>
+)}
     </Container>
   )
 }
