@@ -33,8 +33,7 @@ const handleSubmit = async () => {
       tone
     });
 
-    // setGeneratedReply(typeof res.data === 'string' ? res.data : JSON.stringify(res.data))
-    console.log("Received raw reply:", res.data); // <- Add this log
+
     setGeneratedReply(res.data);
 
   }catch(error){

@@ -1,9 +1,12 @@
 spring:
   application:
-  name: email-writer
+    name: email-writer
 
 gemini:
   api:
     url: ${GEMINI_URL}
     key: ${GEMINI_KEY}
- 
+
+logging:
+  level:
+    com.email.writer.app: INFO

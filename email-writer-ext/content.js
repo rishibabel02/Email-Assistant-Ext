@@ -55,7 +55,6 @@ function injectButton(){
         return;
     }
 
-     console.log("ToolBar Found, creating AI Button")
 
      const button = createAIButton();
      button.classList.add('ai-reply');
@@ -66,7 +65,6 @@ function injectButton(){
             button.disabled = true;
 
             const emailContent = getEmailContent();
-            console.log("Email Content: " + emailContent);
 
             const res = await fetch('http://localhost:8080/api/email/generate', {
                 method: 'POST',
@@ -84,7 +82,6 @@ function injectButton(){
             }
 
             const generatedReply = await res.text()
-            console.log("Received Reply: " + generatedReply);
 
             const composeBox = document.querySelector('[role="textbox"][g_editable="true"]')
 
@@ -93,22 +90,7 @@ function injectButton(){
           
             const paragraphs = generatedReply.split(/\n\n/).filter(p => p.trim());
             composeBox.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
-            console.log("Applied HTML: " + composeBox.innerHTML);
-
-            // const selection = window.getSelection();
-            // if (!selection || selection.rangeCount === 0) return;
-
-            // const range = selection.getRangeAt(0);
-            // range.deleteContents(); 
-
-            // const textNode = document.createTextNode(generatedReply);
-            // range.insertNode(textNode);
-
-            
-            // range.setStartAfter(textNode);
-            // range.setEndAfter(textNode);2
-            // selection.removeAllRanges();
-            // selection.addRange(range);
+ˀ
 
         } else{
             console.log('Compose box was not found')
@@ -135,7 +117,6 @@ const observer = new MutationObserver((mutations) => {
         );
 
         if(hasComposeElements) {
-            console.log("Compose Window detected!")
             setTimeout(injectButton, 500);
         }
     }
@@ -145,3 +126,4 @@ observer.observe(document.body, {
     childList: true,
     subtree: true
 })
+

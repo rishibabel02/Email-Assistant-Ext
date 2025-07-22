@@ -46,19 +46,10 @@ public class EmailGeneratorService {
                 .bodyToMono(String.class)
                 .block();
 
-        System.out.println("Raw API Response: " + response); // Log raw response
         String result = extractResponse(response);
 
-        System.out.println("Processed Response: " + result);
-
         // 4) Extract response and return
-        System.out.println("Returned final reply:");
-        System.out.println(result);
         return result;
-//
-//        return extractResponse(response);
-
-
     }
 
     private String extractResponse(String response) {
@@ -71,8 +62,8 @@ public class EmailGeneratorService {
                 JsonNode parts = content.path("parts");
                 if (parts.isArray() && parts.size() > 0) {
                     String text = parts.get(0).path("text").asText();
-                    // Preserve double newlines for paragraphs, trim only leading/trailing whitespace
-                    return text.replaceAll("\\n{3,}", "\n\n").trim(); // Convert triple+ newlines to double
+
+                    return text.replaceAll("\\n{3,}", "\n\n").trim();
                 }
             }
             return "Error: Invalid response format";
@@ -94,4 +85,5 @@ public class EmailGeneratorService {
         return promptBuilder.toString();
     }
 }
+
 
