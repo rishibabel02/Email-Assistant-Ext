@@ -90,7 +90,7 @@ function injectButton(){
           
             const paragraphs = generatedReply.split(/\n\n/).filter(p => p.trim());
             composeBox.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
-ˀ
+
 
         } else{
             console.log('Compose box was not found')
