@@ -23,8 +23,8 @@ public class EmailGeneratorService {
         this.webClient = webClient;
     }
 
-
     public String generateEmailReply(EmailRequest emailRequest) {
+
         // 1) Build the prompt
         String prompt = buildPrompt(emailRequest);
 
@@ -72,18 +72,37 @@ public class EmailGeneratorService {
         }
     }
 
-    private String buildPrompt(EmailRequest emailRequest) {
-        StringBuilder promptBuilder = new StringBuilder();
-        promptBuilder.append("Generate a professional email reply based on the following email. Do not include a subject line or any HTML tags (e.g., <p>). Use double newlines (\\n\\n) to separate paragraphs. Ensure the response is polite, context-aware, and addresses the timing of the invitation, noting it was for an evening that has passed. Suggest a future opportunity if appropriate. Keep the response concise, natural, and professional, with a clear closing (e.g., 'Best regards, [Your Name]').\n\n");
 
-        if (emailRequest.getTone() != null && !emailRequest.getTone().isEmpty()) {
-            promptBuilder.append("Tone: ").append(emailRequest.getTone()).append("\n");
-        }
+private String buildPrompt(EmailRequest emailRequest) {
+    StringBuilder promptBuilder = new StringBuilder();
+    promptBuilder.append("You are an AI email assistant tasked with generating a professional and context-aware email reply. Follow these rules:\n");
+    promptBuilder.append("- Do NOT include a subject line (e.g., 'Re:' or 'Fwd:').\n");
+    promptBuilder.append("- Use double newlines (\\n\\n) to separate paragraphs.\n");
+    promptBuilder.append("- Avoid HTML tags (e.g., <p>, <br>).\n");
+    promptBuilder.append("- Keep the reply concise, natural, and tailored to the original email’s purpose and tone.\n");
+    promptBuilder.append("- Include a polite closing (e.g., 'Best regards, [Your Name]' or similar, without specifying a name unless provided).\n\n");
 
-        promptBuilder.append("\nOriginal Email Content:\n").append(emailRequest.getEmailContent());
-        promptBuilder.append("\n\nNote: The invitation was for an evening that has already passed. Adjust the response to reflect this.");
-        return promptBuilder.toString();
-    }
+    promptBuilder.append("Analyze the original email thread below to determine its intent (e.g., invitation, request, follow-up, complaint) and respond accordingly. Consider the following:\n");
+    promptBuilder.append("- If the email is an invitation or event-related, note if the date has passed and suggest a future opportunity if appropriate.\n");
+    promptBuilder.append("- If it’s a request, provide a clear action or response based on the context.\n");
+    promptBuilder.append("- If it’s a complaint or issue, acknowledge it politely and propose a solution or next step.\n");
+    promptBuilder.append("- Match the reply tone to the original email unless a specific tone is requested.\n\n");
+
+    // Tone instructions
+    String tone = emailRequest.getTone() != null && !emailRequest.getTone().isEmpty() ? emailRequest.getTone() : "professional";
+    promptBuilder.append("Use a '").append(tone).append("' tone. If no tone is specified or invalid, default to professional and polite.\n\n");
+
+    promptBuilder.append("Original Email Thread:\n---\n");
+    promptBuilder.append(emailRequest.getEmailContent());
+    promptBuilder.append("\n---\n\n");
+
+    promptBuilder.append("Additional Notes:\n");
+    promptBuilder.append("- Check the email’s date and time (if provided) to adjust the response (e.g., apologize for a missed deadline).\n");
+    promptBuilder.append("- If the thread is multi-message, prioritize the latest message but consider the full context.\n");
+    promptBuilder.append("- Ensure the reply feels personal and relevant to the sender’s intent.\n");
+
+    return promptBuilder.toString();
+}
 }
 
 
