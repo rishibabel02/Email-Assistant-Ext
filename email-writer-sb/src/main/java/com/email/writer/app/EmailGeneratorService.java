@@ -1,12 +1,13 @@
 package com.email.writer.app;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Map;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class EmailGeneratorService {
@@ -24,32 +25,35 @@ public class EmailGeneratorService {
     }
 
     public String generateEmailReply(EmailRequest emailRequest) {
+        try{
+            // 1) Build the prompt
+            String prompt = buildPrompt(emailRequest);
 
-        // 1) Build the prompt
-        String prompt = buildPrompt(emailRequest);
+            // 2) Craft a request to the LLM
+            Map<String, Object> reqBody = Map.of(
+                    "contents", new Object[]{
+                            Map.of("parts", new Object[]{
+                                    Map.of("text", prompt)
+                            })
+                    }
+            );
 
-        // 2) Craft a request to the LLM
-        Map<String, Object> reqBody = Map.of(
-                "contents", new Object[]{
-                        Map.of("parts", new Object[]{
-                                Map.of("text", prompt)
-                        })
-                }
-        );
+            // 3) Send request and get the response
+            String response = webClient.post()
+                    .uri(geminiApiUrl + "?key=" + geminiApiKey)
+                    .header("Content-Type", "application/json")
+                    .bodyValue(reqBody)
+                    .retrieve()
+                    .bodyToMono(String.class)
+                    .block();
 
-        // 3) Send request and get the response
-        String response = webClient.post()
-                .uri(geminiApiUrl + "?key=" + geminiApiKey)
-                .header("Content-Type", "application/json")
-                .bodyValue(reqBody)
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
+            String result = extractResponse(response);
 
-        String result = extractResponse(response);
-
-        // 4) Extract response and return
-        return result;
+            // 4) Extract response and return
+            return result;
+        } catch (Exception e) {
+        return "Error processing response: " + e.getMessage();
+        }
     }
 
     private String extractResponse(String response) {
@@ -88,7 +92,6 @@ private String buildPrompt(EmailRequest emailRequest) {
     promptBuilder.append("- If it’s a complaint or issue, acknowledge it politely and propose a solution or next step.\n");
     promptBuilder.append("- Match the reply tone to the original email unless a specific tone is requested.\n\n");
 
-    // Tone instructions
     String tone = emailRequest.getTone() != null && !emailRequest.getTone().isEmpty() ? emailRequest.getTone() : "professional";
     promptBuilder.append("Use a '").append(tone).append("' tone. If no tone is specified or invalid, default to professional and polite.\n\n");
 

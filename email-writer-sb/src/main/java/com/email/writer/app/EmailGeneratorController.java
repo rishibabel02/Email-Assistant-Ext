@@ -15,12 +15,13 @@ public class EmailGeneratorController {
     @PostMapping("/generate")
     public ResponseEntity<String> generateEmail(@RequestBody EmailRequest emailRequest) {
         String res = emailGeneratorService.generateEmailReply(emailRequest);
-        return ResponseEntity.ok(res );
+        return ResponseEntity.ok(res);
     }
 
     public EmailGeneratorController(EmailGeneratorService emailGeneratorService) {
         this.emailGeneratorService = emailGeneratorService;
     }
+
 }
 
 

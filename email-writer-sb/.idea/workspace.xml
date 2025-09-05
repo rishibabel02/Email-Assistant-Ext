@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="527212b7-adff-43e9-bf29-c486925092a0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../email-writer-ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/../email-writer-ext/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../email-writer-ext/hello_extensions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../email-writer-ext/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../email-writer-ext/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/email/writer/app/EmailGeneratorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/email/writer/app/EmailGeneratorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/email/writer/app/EmailGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/email/writer/app/EmailGeneratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/email/writer/EmailWriterApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/email/writer/EmailWriterApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/email/writer/app/EmailGeneratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/email/writer/app/EmailGeneratorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/email/writer/app/EmailRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/email/writer/app/EmailRequest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +51,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2zdyt7JJtVwbSBfcy4GzRZU4Aex" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -108,8 +108,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26574.91" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26574.91" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
       </set>
     </attachedChunks>
   </component>
@@ -132,6 +132,9 @@
       <workItem from="1752466502542" duration="13967000" />
       <workItem from="1752557491069" duration="667000" />
       <workItem from="1752596606418" duration="129000" />
+      <workItem from="1753370917715" duration="18000" />
+      <workItem from="1753677299269" duration="15000" />
+      <workItem from="1753717128474" duration="16000" />
     </task>
     <servers />
   </component>
