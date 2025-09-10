@@ -84,7 +84,7 @@ private String buildPrompt(EmailRequest emailRequest) {
     promptBuilder.append("- Use double newlines (\\n\\n) to separate paragraphs.\n");
     promptBuilder.append("- Avoid HTML tags (e.g., <p>, <br>).\n");
     promptBuilder.append("- Keep the reply concise, natural, and tailored to the original email’s purpose and tone.\n");
-    promptBuilder.append("- Include a polite closing (e.g., 'Best regards, [Your Name]' or similar, without specifying a name unless provided).\n\n");
+    promptBuilder.append("- Include a polite closing (e.g., 'Best regards' or similar, without specifying a name unless provided). Don't write AI Assistant.\n\n");
 
     promptBuilder.append("Analyze the original email thread below to determine its intent (e.g., invitation, request, follow-up, complaint) and respond accordingly. Consider the following:\n");
     promptBuilder.append("- If the email is an invitation or event-related, note if the date has passed and suggest a future opportunity if appropriate.\n");

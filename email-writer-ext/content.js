@@ -20,6 +20,8 @@ function findComposeToolBar(){
 function createAIButton(){
    const button = document.createElement('div');
    button.className = 'T-I J-J5-Ji aoO v7 T-I-atl L3';
+    button.style.background = '#0b57d0';
+    button.style.color = '#fff';
    button.style.marginRight = '8px'
    button.innerHTML = 'AI Reply'
    button.setAttribute('role', 'button')
