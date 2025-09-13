@@ -95,8 +95,11 @@ async function handleAiButtonClick(event) {
         console.error("Email Assistant Error:", error);
         alert('Failed to generate reply. ' + error.message);
     } finally {
-        button.innerText = originalButtonText;
-        button.style.pointerEvents = 'auto';
+        const currentButton = document.querySelector('.ai-reply-button');
+        if (currentButton) {
+            currentButton.innerText = originalButtonText;
+            currentButton.style.pointerEvents = 'auto';
+        }
     }
 }
 
