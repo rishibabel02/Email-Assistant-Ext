@@ -1,0 +1,31 @@
+.ai-reply-button {
+    background-color: #0b57d0;
+    color: white;
+    padding: 0 16px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    border-radius: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.ai-reply-button:hover {
+    background-color: #1a64d6;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3);
+}
+
+.ai-reply-button[style*="pointer-events: none"] {
+    background-color: #1a64d6;
+    cursor: default;
+    box-shadow: none;
+}
+
+.gU.Up, [role="toolbar"] {
+    display: flex !important;
+    align-items: center !important;
+}

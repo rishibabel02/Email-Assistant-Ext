@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import Container from '@mui/material/Container'
 import './App.css'
@@ -29,7 +28,7 @@ const handleSubmit = async () => {
   try{
 
     const res = await axios.post("http://localhost:8080/api/email/generate", {
-      emailContent, 
+      emailContent,
       tone
     });
 
@@ -49,7 +48,7 @@ const handleSubmit = async () => {
       <Typography variant='h3' component="h1" gutterBottom>
         Email Reply Generator
       </Typography>
-     
+
      <Box sx={{mx:3}}>
       <TextField
         fullWidth
@@ -62,15 +61,15 @@ const handleSubmit = async () => {
         slotProps={{ inputLabel: { shrink: true } }}
         sx={{mb:2}}
         />
-       
+
        <FormControl fullWidth sx={{ mb: 2}}>
         <InputLabel>Tone(Optional)</InputLabel>
-        <Select 
+        <Select
           value={tone || ''}
           label={"Tone(Optional)"}
           onChange={(e) => setTone(e.target.value)}
         >
-        
+
         <MenuItem value="Professional">Professional</MenuItem>
         <MenuItem value="Friendly">Friendly</MenuItem>
         <MenuItem value="Casual">Casual</MenuItem>
